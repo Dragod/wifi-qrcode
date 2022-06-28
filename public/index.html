@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Generate wifi QR code</title>
+</head>
+<body>
+<div class="container flex flex-row">
+    <main class="flex flex-column">
+        <h1 class="ma-b-1 title">Create Wifi Qr code</h1>
+        <button id="deleteQr" class="deleteQr">delete</button>
+        <div class="flex flex-column">
+            <form action="qr" method="post" id="qr-form">
+                <div class="form-group flex flex-column">
+
+                    <label for="ssid" class="flex">
+                        <span class="flex flex-1">Wifi name (ssid)</span>
+                        <small class="self-center">required</small>
+                    </label>
+
+                    <input type="text" class="form-control" id="ssid" name="ssid" placeholder="ssid">
+
+                    <label for="password" class="flex">
+                        <span class="flex flex-1">Password</span>
+                        <small class="self-center">required</small>
+                    </label>
+
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password">
+
+                    <label for="encryption">Encryption type</label>
+
+                    <div class="flex flex-column pa-t-half">
+                        <label for="wpa">
+                            <input type="radio" class="form-control" id="wpa" name="encryptionType" value="WPA" checked>
+                            <span class="pointer-hand">WPA</span>
+                        </label>
+                        <label for="wep">
+                            <input type="radio" class="form-control" id="wep" name="encryptionType" value="WEP">
+                            <span class="pointer-hand">WEP</span>
+                        </label>
+                    </div>
+                    <small class="error validationErr"></small>
+                    <button id="send" type="submit" class="Button ma-t-half">
+                        Generate
+                        <span class="Button-mask Button-slides slides-left Graident-five"></span>
+                    </button>
+                </div>
+            </form>
+            <div>
+                <p class="info">Print Qr code just typing "Ctrl+P". Make sure to enable "background graphics" in the printing options if you use a chromium browser.</p>
+            </div>
+            </div>
+    </main>
+    <div id="generated" class="generated"></div>
+</div>
+<script src="./client.js"></script>
+</body>
+</html>
