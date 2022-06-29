@@ -2,11 +2,7 @@ import qrcode from "wifi-qr-code-generator"
 
 class qrGen {
 
-    ssid: string
-    password: string
-    encryption: any
-
-    constructor(ssid:string, password:string, encryption:any){
+    constructor(ssid, password, encryption){
 
         this.ssid = ssid,
         this.password = password,
@@ -22,7 +18,7 @@ class qrGen {
             password: this.password,
             encryption: this.encryption,
             hiddenSSID: false,
-            outputFormat: { type: 'svg' }
+            outputFormat: { type: 'image/png' }
 
         })
         .then((data) => {return data})

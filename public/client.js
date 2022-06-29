@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", function(){
     // Handler when the DOM is fully loaded
 
     // get form elements
-    let ssid = document.getElementById('ssid')
-    let password = document.getElementById('password')
-    let ssidMaxLength = 32
-    let passwordMaxLength = 63
+    const generated = document.getElementById('generated')
+    const validationErr = document.querySelector('.validationErr')
+    const ssid = document.getElementById('ssid')
+    const password = document.getElementById('password')
+    const ssidMaxLength = 32
+    const passwordMaxLength = 63
     errorMessage = {
         one: `Please type a valid name and password`,
         two: `Please type a name`,
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     // Alphanumeric string with spaces and "_  -"
-    alphanumeric = (input) => {
+    let alphanumeric = (input) => {
 
         let letterNumber = /^[a-z0-9]+([-_\s]{1}[a-z0-9]+)*$/i
 
@@ -31,8 +33,6 @@ document.addEventListener("DOMContentLoaded", function(){
             return false
         }
     }
-
-    const validationErr = document.querySelector('.validationErr')
 
     let validate = (msg, el1, el2, e, errorClass = 'error') => {
 
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function(){
         return false
     }
 
-    formValidator = (ssid, password, e) => {
+    let formValidator = (ssid, password, e) => {
 
         if ((ssid.value === '' && password.value === '')) {
 
@@ -94,48 +94,8 @@ document.addEventListener("DOMContentLoaded", function(){
             ssid.classList.remove('error')
             password.classList.remove('error')
 
-            //fetchQR()
         }
     }
-
-    // fetch from localhost:8000/qr
-    // let fetchQR = () => {
-
-    //     let url = 'http://localhost:8000/qr'
-
-    //     fetch(url, { method: 'GET' })
-    //     .then(response => response.json())
-    //     .then(data => {
-
-    //         console.log(data)
-
-    //         localStorage.setItem('qrcode', JSON.stringify(data))
-
-    //         let  retrievedObject = localStorage.getItem('qrcode')
-
-    //         console.log('retrievedObject: ', JSON.parse(retrievedObject))
-
-    //     })
-    //     .catch(error => console.error(error))
-
-    // }
-
-    // add event listener to form button
-    document.getElementById('qr-form').addEventListener('submit', function(e){
-
-        // Delete local storage qrcode
-        if (localStorage.getItem('qrcode') != null){
-
-            localStorage.removeItem('qrcode')
-        }
-
-        // Remove previous error messages
-        ssid.classList.remove('error')
-        password.classList.remove('error')
-
-        formValidator(ssid, password, e)
-
-    })
 
     let fetchQRcode = async () => {
 
@@ -147,11 +107,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
             const data = await response.json()
 
-            localStorage.setItem('qrcode', JSON.stringify(data))
-
-            let  retrievedObject = localStorage.getItem('qrcode')
-
-            console.log('retrievedObject: ', JSON.parse(retrievedObject))
+            sessionStorage.setItem('qrcode', JSON.stringify(data))
 
             return await data
 
@@ -163,11 +119,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
     }
 
-    const generated = document.getElementById('generated')
+    let generatedHtml = async() => {
 
-    let generatedHtml = () => {
-
-        let  retrievedObject = localStorage.getItem('qrcode')
+        let  retrievedObject = sessionStorage.getItem('qrcode')
 
         console.log('localstorage: ', JSON.parse(retrievedObject))
 
@@ -175,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
         let ssid = localStorageQR.wifi.ssid
         let password = localStorageQR.wifi.password
-        let encryption = localStorageQQR.wifi.encryption
+        let encryption = localStorageQR.wifi.encryption
         let png = localStorageQR.wifi.qrcode
 
         if(png === undefined || png === null){
@@ -209,74 +163,34 @@ document.addEventListener("DOMContentLoaded", function(){
 
     }
 
+    fetchQRcode()
+        .then(generatedHtml)
+        .catch(error => console.error(error))
 
-    fetchQRcode().then(data => {
+    deleteSessionStorage = () => {
 
-        // generated.innerHTML  =
-        // `
-        // <div class="js-generated flex flex-column flex-1 ma-l-1">
-        //     <div class="qr-settings flex flex-1 flex-column">
-        //         <p class="qr-ssid">Wifi name: ${ssid}</p>
-        //         <p class="qr-pass">Password: ${password}</p>
-        //         <p class="qr-encryption">Encryption: ${encryption}</p>
-        //     </div>
-        //     <div class="qr-image flex self-center flex-column">
-        //         <p class="ma-t-0">Wifi ssid: ${ssid}</p>
-        //         <img src='${png}' alt='Ssid:${ssid}-Password:${password}-Encryption:${encryption}' title='Ssid:${ssid}-Password:${password}-Encryption:${encryption}'>
-        //     </div>
-        // </div>
-        // `
+        if (sessionStorage.getItem('qrcode') != null){
 
-        if(data.wifi.qrcode === undefined || data.wifi.qrCode === null){
-
-            generated.innerHTML =
-            `
-            <div class="js-generated flex flex-1 ma-l-1">
-                <div class="qr-image flex self-center flex-1 flex-column">
-                    <p>No wifi settings found</p>
-                </div>
-            </div>
-            `
+            sessionStorage.clear()
 
             generated.classList.add('visibility-hidden')
-
         }
-        else
-        {
-            generated.classList.remove('visibility-hidden')
-
-            let png = data.wifi.qrcode
-            let ssid = data.wifi.ssid
-            let password = data.wifi.password
-            let encryption = data.wifi.encryptionType
-
-            generated.innerHTML  =
-            `
-            <div class="js-generated flex flex-1 ma-l-1">
-                <div class="qr-image flex self-center flex-1 flex-column">
-                    <p class="ma-t-0">Wifi ssid: ${ssid}</p>
-                    <img src='${png}' alt='Ssid:${ssid}-Password:${password}-Encryption:${encryption}' title='Ssid:${ssid}-Password:${password}-Encryption:${encryption}'>
-                </div>
-            </div>
-            `
-        }
-
-    })
-    .catch(error => console.error(error))
-
-
-    let deleteQr = async () => {
-
-        let url = 'http://localhost:8000/qr'
-
-        const res = await fetch(url, { method: 'DELETE', })
-        const res_1 = await res.text()
-        return console.log(res_1)
 
     }
 
-    let delQr = document.getElementById('deleteQr')
+    let deleteQRcode = document.getElementById('deleteQr')
 
-    delQr.addEventListener('click', deleteQr)
+    deleteQRcode.addEventListener('click', deleteSessionStorage)
+
+    // add event listener to form button
+    document.getElementById('qr-form').addEventListener('submit', function(e){
+
+        // Remove previous error messages
+        ssid.classList.remove('error')
+        password.classList.remove('error')
+
+        formValidator(ssid, password, e)
+
+    })
 
 })
