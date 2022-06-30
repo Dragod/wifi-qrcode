@@ -4,7 +4,7 @@ Generate a wifi qr code png image in base64
 
 The qr code is optimized for printing there is also an option to download the image if you need.
 
-This web app is running in nodejs with Express.
+This web app is running in nodejs with Express, no database needed.
 
 ![alt text](https://x.pfcode.net/VujE3/soxuCevu86.png/raw)
 
