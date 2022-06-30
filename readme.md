@@ -1,27 +1,10 @@
-# Old code
+### Generate Wifi WR code
 
-```js
-import qrcode from "wifi-qr-code-generator"
+![alt text](https://x.pfcode.net/VujE3/soxuCevu86.png/raw)
 
-let wifiQR = async (ssid, password, encryption) => {
+Run
+```shell
+npm i
 
-    await qrcode.generateWifiQRCode({
-        ssid: ssid,
-        password: password,
-        encryption: encryption,
-        hiddenSSID: false,
-        outputFormat: { type: 'svg' }
-    })
-    .then((data) => console.log(data))
-    .catch((err) => console.log(`Error: ${err}`))
-
-}
-
-console.log(`\nGuest password 2.5G\n`);
-
-await wifiQR('guest2.5G', 'ATWVpXCqJkA2sVHjcLrUy2UAdBuZMZ', 'WPA2-PSK')
-
-console.log(`\nGuest password 5G\n`);
-
-await wifiQR('guest5G', 'qskMpvH53EEhJ6YWzp4zmb5uuK6Taz', 'WPA2-PSK')
+NODE_ENV=development nodemon index.js
 ```

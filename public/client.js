@@ -127,8 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
     <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>`
 
-
-
     let post = async (url, ssid, password, encryption) =>{
 
         // post body data
@@ -187,15 +185,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             })
 
-
-        }else{
+        }
+        else {
 
             console.log('Form is invalid. Will not "POST".')
 
         }
 
     })
-
 
     let fetchQRcode = async () => {
 
@@ -262,24 +259,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     }
-
-    // let downloadQr = (imageBase64, ssid) => {
-
-    //     var download = document.getElementById('download-qr')
-
-    //     download.href = "data:image/png;base64," + imageBase64
-
-    //     download.download = `Wifi-${ssid}`
-
-    //     download.click()
-    // }
-
-    // downloadIcon.addEventListener('click', () => {
-
-    //     downloadQr(png, ssid)
-
-    // })
-
-
 
 })

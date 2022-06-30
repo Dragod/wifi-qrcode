@@ -78,7 +78,7 @@ input.error {
 }
 input[type="radio"] {
   cursor: pointer;
-  margin: 0 0.5rem 0.5rem 0;
+  margin-left: 0;
 }
 ul,
 li {

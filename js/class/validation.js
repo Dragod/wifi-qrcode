@@ -1,4 +1,3 @@
-
 class Validation {
 
     constructor(ssid, password) {
@@ -68,7 +67,7 @@ class Validation {
         }
         else if(!this.isValidSsid(wifiName)){
 
-            this.showError(this.ssid, `Network name (SSID) must be at least 3 character. but not more than 32 characters. It can only contain a-z, A-Z, 0-9, _ or -.`)
+            this.showError(this.ssid, `Network name (SSID) must be at least 3 character but not more than 32 also no spaces allowed. It can only contain a-z, A-Z, 0-9, _ or -.`)
 
         }
         else {
@@ -111,6 +110,7 @@ class Validation {
         return valid
 
     }
+
 }
 
 export default Validation
