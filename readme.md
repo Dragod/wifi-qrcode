@@ -1,4 +1,4 @@
-### Generate Wifi WR code
+### Generate Wifi QR code
 
 ![alt text](https://x.pfcode.net/VujE3/soxuCevu86.png/raw)
 
