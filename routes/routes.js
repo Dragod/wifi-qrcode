@@ -1,23 +1,18 @@
 import express from 'express'
 import qrGen from '../js/class/qr-gen.js';
 const router = express.Router()
-let qrResponse = {}
-let wifiQrcode
 
-router.get('/', (req, res, next) => {
-    next()
-})
+let wifi= {}
+let image = {}
 
 router.get('/qr', (req, res, next) => {
 
-    res.status(201).json({
+    res.status(200).json({
 
         status: 'success',
         wifi: {
-            ssid:  qrResponse.ssid,
-            password:  qrResponse.password,
-            encryptionType:  qrResponse.encryptionType,
-            qrcode:  wifiQrcode
+            qr:  wifi,
+            png: image
         }
 
     })
@@ -32,26 +27,24 @@ router.post('/qr',async (req,res,next)=>{
         encryptionType: req.body.encryptionType
     }
 
-    qrResponse = response
+    wifi = response
 
     let data =  `\nssid: ${response.ssid}\npass: ${response.password}\nEncryption type: ${response.encryptionType}\n`
 
     console.log(`\nQrcode\n${data}`)
 
-    let qr = new qrGen(response.ssid, response.password, response.encryptionType)
+    let newQr = new qrGen(response.ssid, response.password, response.encryptionType)
 
-    let getQr = await qr.wifi()
+    let qr = await newQr.wifi()
 
-    wifiQrcode = getQr;
+    image = qr
 
-    console.log(getQr);
+    console.log(`${qr}\n`)
 
-    res.redirect('/')
-})
+    let png = {qr: qr}
 
-router.delete('/qr',(req,res,next)=>{
-    console.log("delete: req.body: " + JSON.stringify(req.body));
-    res.status(204).json(req.body.ssid);
+    res.status(201).send(png)
+
 })
 
 export default router;

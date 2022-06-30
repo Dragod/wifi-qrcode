@@ -2,9 +2,13 @@ c-w = #fff
 primary = #1a1a1a
 panel-opacity = 0.9
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 // Qr code printing styles
 
 @media print
+    html,body
+        background-color: #fff !important
     main
     .qr-settings
         display none !important
@@ -13,8 +17,16 @@ panel-opacity = 0.9
     .js-generated
         padding .5rem !important
         box-shadow: none !important
-        min-width: 17rem !important
+        min-width: 18rem !important
         max-width: 17rem !important
+        min-height: 20rem !important
+    .download-qr
+        display none !important
+    .qr-image-print
+        height: 204px !important
+        width: 204px !important
+    .wifi-name
+        font-weight: 600 !important
 
 html, body
     height: 100%
@@ -59,12 +71,17 @@ input
 
 input[type="radio"]
     cursor: pointer
+    margin: 0 .5rem .5rem 0
+
 
 ul,li
     list-style-type: none
 
 .flex
     display: flex
+
+.flex-inline
+    display: inline-flex
 
 .flex-0
     flex: 0
@@ -102,12 +119,13 @@ ul,li
 .pos-r
     position: relative
 
-.valError
-    color: #ff0000
-    border: 1px solid #ff0000
-    padding: .5rem
-    margin-top: .5rem
-    border-radius: 3px
+.pos-a
+    position: absolute
+
+.download-qr
+    color: #fff
+    top: 2.5rem;
+    left: 1.8rem;
 
 .visibility-hidden
     visibility hidden
@@ -167,11 +185,20 @@ ul,li
 .max-width-23
     max-width: 23rem
 
+.min-height-17
+    min-height: 17rem
+
 .pointer-event
     pointer-events : none
 
 .pointer-hand
     cursor: pointer
+
+.hide
+    display: none
+
+.show
+    display: block
 
 [draggable]
     user-select: none
@@ -219,6 +246,7 @@ main
     min-width: 25rem;
     box-shadow: 7px 10px 5px -5px rgb(0 0 0 / 75%);
     border: 1px solid #b6b2b2;
+    min-height: 30rem
 
 small
     font-size: 12px
@@ -232,6 +260,8 @@ small
     padding: 1.5rem;
     border-radius: 4px;
     box-shadow: 7px 10px 5px -5px rgba(0,0,0,0.75)
+    min-height: 20rem
+    min-width: 20rem
 
 .container
     justify-content: center
@@ -250,7 +280,7 @@ small
     //box-shadow: 7px 10px 5px -5px rgba(0,0,0,0.75)
 
 .form-group label span
-    font-size: .85rem
+    font-size: .75rem
 
 .title
     color: #2e2e2e
@@ -260,6 +290,32 @@ small
     border: none
     &span
         cursor: pointer
+
+:root {
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+
+.form-field input:focus {
+    outline: none;
+}
+
+.form-field.error input {
+    border-color: var(--error-color);
+}
+
+.form-field.success input {
+    border-color: var(--success-color);
+}
+
+.form-field small {
+    padding-bottom: .5rem
+    color: var(--error-color);
+}
+
+.form-group span.required
+    font-size: .65rem
 
 // Gradients
 

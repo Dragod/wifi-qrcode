@@ -6,18 +6,20 @@ import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import router from './routes/routes.js'
 
-const app = express()
+// Use environment variables
+dotenv.config({path: './config.env'})
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-// Use environment variables
-dotenv.config({path: './config.env'})
+const app = express()
 
 // Middleware
 
 if (process.env.NODE_ENV === 'development') {
+
     app.use(morgan('dev'));
+
 }
 
 app.use(express.json())
