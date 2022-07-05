@@ -1,4 +1,4 @@
-import qrGen from './qr-gen.js'
+import qrGen from './class/qr-gen.js'
 
 let slow = new qrGen('guest2-5G', 'ATWVpXCqJkA2sVHjcLrUy2UAdBuZMZ', 'WPA2-PSK')
 

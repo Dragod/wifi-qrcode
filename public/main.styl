@@ -2,9 +2,13 @@ c-w = #fff
 primary = #1a1a1a
 panel-opacity = 0.9
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 // Qr code printing styles
 
 @media print
+    html,body
+        background-color: #fff !important
     main
     .qr-settings
         display none !important
@@ -13,8 +17,16 @@ panel-opacity = 0.9
     .js-generated
         padding .5rem !important
         box-shadow: none !important
-        min-width: 17rem !important
+        min-width: 18rem !important
         max-width: 17rem !important
+        min-height: 20rem !important
+    .download-qr
+        display none !important
+    .qr-image-print
+        height: 204px !important
+        width: 204px !important
+    .wifi-name
+        font-weight: 600 !important
 
 html, body
     height: 100%
@@ -26,7 +38,7 @@ html, body
 body
     margin: 0;
     background-color: #efefef;
-    background-image: url(./img/qr1.jpg);
+    background-image: url(./img/qr.jpg);
     background-repeat-x: no-repeat;
     background-size: cover;
     padding: 5rem 0;
@@ -57,32 +69,19 @@ input
     &.error
         border-color: #ff0000
 
-
-// button
-//     padding: .5rem
-//     cursor: pointer
-//     appearance: none
-//     outline: none
-//     border-radius: 3px
-//     background-color: #e7d2cc
-//     border: 2px solid transparent
-//     color: #2e2e2e
-//     font-weight: 600
-//     transition: all .2s ease-in-out
-
-// button:hover
-//     border: 2px solid #e7d2cc
-//     background-color: #fff
-
-
 input[type="radio"]
     cursor: pointer
+    margin-left: 0
+
 
 ul,li
     list-style-type: none
 
 .flex
     display: flex
+
+.flex-inline
+    display: inline-flex
 
 .flex-0
     flex: 0
@@ -120,12 +119,13 @@ ul,li
 .pos-r
     position: relative
 
-.valError
-    color: #ff0000
-    border: 1px solid #ff0000
-    padding: .5rem
-    margin-top: .5rem
-    border-radius: 3px
+.pos-a
+    position: absolute
+
+.download-qr
+    color: #fff
+    top: 2.5rem;
+    left: 1.8rem;
 
 .visibility-hidden
     visibility hidden
@@ -179,41 +179,26 @@ ul,li
 .c-w-text
     color: c-w
 
-.sidebar
-    min-width: 15rem
-    visibility: hidden
-
-.sidebar label
-    color: c-w
-
 .m-w-50
     max-width: 50%
 
-button.primary
-    background-color: primary;
-    color: #ffffff
-    border: none
-
-// .radio-list
-//     margin-left: 10rem
-//     margin-right: 17rem
-
-.panel
-    background-color: primary
-    color: c-w
-    margin-bottom: 1rem;
-    padding: 1rem
-    opacity: panel-opacity
-    border-radius: .25rem
-
 .max-width-23
     max-width: 23rem
+
+.min-height-17
+    min-height: 17rem
 
 .pointer-event
     pointer-events : none
 
 .pointer-hand
     cursor: pointer
+
+.hide
+    display: none
+
+.show
+    display: block
 
 [draggable]
     user-select: none
@@ -250,20 +235,7 @@ button.primary
 .material-icons.small
     font-size: 17px
 
-//
-.background
-    display: block
-    position: absolute
-    top: 0
-    left: 0
-    -o-object-fit: cover
-    object-fit: cover
-    width: 100%
-    height: 100%
-    -webkit-mask-image: radial-gradient(white 0%, white 30%, transparent 80%, transparent)
-    mask-image: radial-gradient(white 0%, white 30%, transparent 80%, transparent)
-
-    //New
+// Qr code styles
 
 main
     max-width: 30%;
@@ -274,6 +246,7 @@ main
     min-width: 25rem;
     box-shadow: 7px 10px 5px -5px rgb(0 0 0 / 75%);
     border: 1px solid #b6b2b2;
+    min-height: 30rem
 
 small
     font-size: 12px
@@ -287,6 +260,8 @@ small
     padding: 1.5rem;
     border-radius: 4px;
     box-shadow: 7px 10px 5px -5px rgba(0,0,0,0.75)
+    min-height: 20rem
+    min-width: 20rem
 
 .container
     justify-content: center
@@ -305,7 +280,7 @@ small
     //box-shadow: 7px 10px 5px -5px rgba(0,0,0,0.75)
 
 .form-group label span
-    font-size: .85rem
+    font-size: .75rem
 
 .title
     color: #2e2e2e
@@ -316,10 +291,33 @@ small
     &span
         cursor: pointer
 
-// Gradients
+:root {
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
 
-// remCalc(val)
-// return (val/16)rem
+.form-field input:focus {
+    outline: none;
+}
+
+.form-field.error input {
+    border-color: var(--error-color);
+}
+
+.form-field.success input {
+    border-color: var(--success-color);
+}
+
+.form-field small {
+    padding-bottom: .5rem
+    color: var(--error-color);
+}
+
+.form-group span.required
+    font-size: .65rem
+
+// Gradients
 
 gradients = {
 	one 	: linear-gradient(135deg, #ecc344 0%, #e42d7f 100%), 		// yellow pink
