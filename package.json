@@ -1,17 +1,20 @@
 {
   "name": "wifi-qr",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Generate QR code for wifi connection",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "NODE_ENV=development nodemon index.js",
-    "build": "tsc -p .",
-    "style": "stylus -w  ./public/main.styl  -o ./public"
+    "app:install": "npm i && npm i -g nodemon",
+    "start:dev": "npm run style && npm start",
+    "start": "cross-env NODE_ENV=development nodemon server.js",
+    "style": "stylus ./public/main.styl  -o ./public",
+    "style:watch": "stylus -w  ./public/main.styl  -o ./public"
   },
-  "author": "",
+  "author": "Paniconi Fabio",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
     "wifi-qr-code-generator": "^1.1.1"
   },
@@ -19,7 +22,6 @@
     "express": "^4.18.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.18",
-    "pug": "^3.0.2",
     "stylus": "^0.58.1"
   }
 }
