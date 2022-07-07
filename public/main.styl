@@ -10,8 +10,7 @@ panel-opacity = 0.9
     html,body
         background-color: #fff !important
     main
-    .qr-settings
-        display none !important
+        display: none !important
     body
         background-image: none !important
     .js-generated
@@ -20,6 +19,10 @@ panel-opacity = 0.9
         min-width: 18rem !important
         max-width: 17rem !important
         min-height: 20rem !important
+        // Force Background Images And Colors To Be Visible On Print
+        // https://www.smashingmagazine.com/2013/03/tips-and-tricks-for-print-style-sheets/
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     .download-qr
         display none !important
     .qr-image-print
@@ -27,6 +30,9 @@ panel-opacity = 0.9
         width: 204px !important
     .wifi-name
         font-weight: 600 !important
+    @page
+        size: A4 portrait;
+        margin: 0;
 
 //End print style
 
