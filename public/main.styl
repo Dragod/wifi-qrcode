@@ -28,9 +28,12 @@ panel-opacity = 0.9
     .wifi-name
         font-weight: 600 !important
 
+//End print style
+
 html, body
-    height: 100%
+    display: flex
     font-family: 'Open Sans', sans-serif
+    height: 100vh
 
 *
     box-sizing: border-box
@@ -42,7 +45,6 @@ body
     background-repeat-x: no-repeat;
     background-size: cover;
     padding: 5rem 0;
-    height: 100vh;
     width: 100vh;
     background-position: 0% 100%;
     margin-left: 3rem
@@ -129,10 +131,6 @@ ul,li
 
 .visibility-hidden
     visibility hidden
-
-.main
-    height: calc(100% - 4rem);
-    padding: 2rem
 
 .overflow-auto
     overflow: auto
@@ -246,7 +244,6 @@ main
     min-width: 25rem;
     box-shadow: 7px 10px 5px -5px rgb(0 0 0 / 75%);
     border: 1px solid #b6b2b2;
-    min-height: 30rem
 
 small
     font-size: 12px
@@ -393,3 +390,44 @@ button
 		background: gradients.four
 	&-five
 		background: gradients.five
+
+// Mobile
+
+html.mobile {
+    height: auto
+}
+
+body.mobile {
+    height: auto
+    padding: 0
+    margin-left: 0
+    background-image: none
+}
+
+.mobile main {
+    max-width: 100vw
+    min-width: 100vw
+}
+
+.mobile .container {
+    flex-direction: column
+}
+
+.mobile .info {
+    display: none
+}
+
+.mobile input {
+    padding: 1rem
+}
+
+.mobile .gernated {
+    display: flex
+    width: 100vw
+}
+
+.mobile .js-generated {
+    width: 100vw
+    min-width: 100vw
+    margin-left: 0
+}

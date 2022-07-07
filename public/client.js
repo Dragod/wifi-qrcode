@@ -112,6 +112,14 @@ class Validation {
     }
 }
 
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+
+    const html = document.querySelector('html')
+    const body = document.querySelector('body')
+    html.classList.add('mobile')
+    body.classList.add('mobile')
+}
+
  // Handler when the DOM is fully loaded
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -123,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById('password')
     const form = document.getElementById('qr-form')
     const generated = document.getElementById('generated')
-    const downloadIcon = `    <svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" class="pointer-hand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" id="downloadQr">
+    const downloadIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="25" width="25" class="pointer-hand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" id="downloadQr">
     <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>`
 
