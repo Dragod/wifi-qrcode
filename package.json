@@ -8,8 +8,8 @@
     "app:install": "npm i && npm i -g nodemon",
     "start:dev": "npm run style && npm start",
     "start": "cross-env NODE_ENV=development nodemon server.js",
-    "style": "stylus ./public/main.styl  -o ./public",
-    "style:watch": "stylus -w  ./public/main.styl  -o ./public"
+    "style": "stylus ./public/  -o ./public",
+    "style:watch": "stylus -w  ./public/  -o ./public"
   },
   "author": "Paniconi Fabio",
   "license": "ISC",
