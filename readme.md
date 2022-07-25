@@ -14,7 +14,13 @@ This Web app is running nodejs with Express, NO database required.
 
 ![alt text](https://x.pfcode.net/VujE3/dAKafiTa60.png/raw)
 
+After scanning the QR code on your mobile device, just press "Connect".
+
 ![alt text](/public/img/mobile.png)
+
+Print the QR code so you can share with family and guests.
+
+![alt text](https://x.pfcode.net/VujE3/KOreLOjU85.png/raw)
 
 ## Run the nodejs/express 4 server
 
