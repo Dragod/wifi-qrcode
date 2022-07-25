@@ -12,7 +12,7 @@ The qr code is optimized for printing, also there is an option to download the p
 
 This Web app is running nodejs with Express, NO database required.
 
-![alt text](https://x.pfcode.net/VujE3/PIpeyoKU77.png/raw)
+![alt text](https://x.pfcode.net/VujE3/dAKafiTa60.png/raw)
 
 ## Run the nodejs/express server
 
