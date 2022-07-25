@@ -1,3 +1,9 @@
+# Credits
+
+Qr code is generated with [https://github.com/fantasywidgets/wifi-qr-code-generator#readme](https://github.com/fantasywidgets/wifi-qr-code-generator#readme)
+
+I have used this great article to get inspiration for the client side validation: [javascripttutorial.net](https://www.javascripttutorial.net/javascript-dom/javascript-form-validation/)
+
 # Wifi QR code
 
 Generate a wifi qr code png image base64.
@@ -6,7 +12,7 @@ The qr code is optimized for printing, also there is an option to download the p
 
 This Web app is running nodejs with Express, NO database required.
 
-![alt text](https://x.pfcode.net/VujE3/QeVOYIRa52.png/raw)
+![alt text](https://x.pfcode.net/VujE3/PIpeyoKU77.png/raw)
 
 ## Run the nodejs/express server
 
