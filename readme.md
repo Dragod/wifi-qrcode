@@ -1,6 +1,6 @@
 # Credits
 
-Qr code is generated with [https://github.com/fantasywidgets/wifi-qr-code-generator#readme](https://github.com/fantasywidgets/wifi-qr-code-generator#readme)
+Qr code is generated with [https://github.com/fantasywidgets/wifi-qr-code-generator](https://github.com/fantasywidgets/wifi-qr-code-generator#readme)
 
 I have used this great article to get inspiration for the client side validation: [javascripttutorial.net](https://www.javascripttutorial.net/javascript-dom/javascript-form-validation/)
 
