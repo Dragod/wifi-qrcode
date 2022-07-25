@@ -12,7 +12,7 @@ The qr code is optimized for printing, also there is an option to download the p
 
 This Web app is running nodejs with Express, NO database required.
 
-![alt text](https://x.pfcode.net/VujE3/dAKafiTa60.png/raw)
+![alt text](/public/img/app.png)
 
 After scanning the QR code on your mobile device, just press "Connect".
 
@@ -20,7 +20,7 @@ After scanning the QR code on your mobile device, just press "Connect".
 
 Print the QR code so you can share with family and guests.
 
-![alt text](https://x.pfcode.net/VujE3/KOreLOjU85.png/raw)
+![alt text](/public/img/print.png)
 
 ## Run the nodejs/express 4 server
 
