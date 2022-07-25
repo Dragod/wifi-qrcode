@@ -1,0 +1,31 @@
+// Qr code printing styles
+
+@media print
+    html,body
+        background-color: #fff !important
+    main
+        display: none !important
+    body
+        background-image: none !important
+    .js-generated
+        padding .5rem !important
+        box-shadow: none !important
+        min-width: 18rem !important
+        max-width: 17rem !important
+        min-height: 20rem !important
+        // Force Background Images And Colors To Be Visible On Print
+        // https://www.smashingmagazine.com/2013/03/tips-and-tricks-for-print-style-sheets/
+        -webkit-print-color-adjust: exact
+        print-color-adjust: exact
+    .download-qr
+        display none !important
+    .qr-image-print
+        height: 204px !important
+        width: 204px !important
+    .wifi-name
+        font-weight: 600 !important
+    @page
+        size: A4 portrait
+        margin: 0
+
+//End print style

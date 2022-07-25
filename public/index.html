@@ -2,63 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" type="text/css" href="main.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" media="print" href="print.css"/>
+    <script src="./client.js" defer type='module'></script>
     <title>Generate wifi QR code</title>
 </head>
 <body>
 <div class="container flex flex-row">
     <main class="flex flex-column">
-        <h1 class="ma-b-1 title">Create Wifi Qr code</h1>
-        <button id="deleteQr" class="deleteQr">delete</button>
+        <h1 class="ma-b-1 title">Wifi Qr code</h1>
         <div class="flex flex-column">
-            <form action="qr" method="post" id="qr-form">
+            <form action="qr" method="post" id="qr-form" class="form">
                 <div class="form-group flex flex-column">
 
-                    <label for="ssid" class="flex">
-                        <span class="flex flex-1">Wifi name (ssid)</span>
-                        <small class="self-center">required</small>
-                    </label>
+                    <div class="form-field flex flex-1 flex-column">
 
-                    <input type="text" class="form-control" id="ssid" name="ssid" placeholder="ssid">
-
-                    <label for="password" class="flex">
-                        <span class="flex flex-1">Password</span>
-                        <small class="self-center">required</small>
-                    </label>
-
-                    <input type="password" class="form-control" id="password" name="password" placeholder="password">
-
-                    <label for="encryption">Encryption type</label>
-
-                    <div class="flex flex-column pa-t-half">
-                        <label for="wpa">
-                            <input type="radio" class="form-control" id="wpa" name="encryptionType" value="WPA" checked>
-                            <span class="pointer-hand">WPA</span>
+                        <label for="ssid" class="flex">
+                            <label class="flex flex-1">Network name (SSID)</label>
+                            <span class="self-center required">required</span>
                         </label>
-                        <label for="wep">
-                            <input type="radio" class="form-control" id="wep" name="encryptionType" value="WEP">
-                            <span class="pointer-hand">WEP</span>
-                        </label>
+
+                        <input type="text" class="form-control" id="ssid" name="ssid" placeholder="Network name (SSID)" autocomplete="off">
+
+                        <small></small>
+
                     </div>
+
+                    <div class="form-field flex flex-1 flex-column">
+
+                        <label for="password" class="flex">
+                            <label class="flex flex-1">Password</label>
+                            <span class="self-center required">required</span>
+                        </label>
+
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
+
+                        <small></small>
+
+                    </div>
+
+                    <div class="form-field flex flex-1 flex-column">
+
+                        <label for="encryption">Encryption type</label>
+
+                        <div class="flex flex-column pa-t-half">
+
+                            <label for="wpa" class="flex-inline">
+                                <input type="radio" class="form-control" id="wpa" name="encryptionType" value="WPA" checked>
+                                <span class="pointer-hand">WPA / WPA2</span>
+                            </label>
+
+                            <label for="wep" class="flex-inline">
+                                <input type="radio" class="form-control" id="wep" name="encryptionType" value="WEP">
+                                <span class="pointer-hand">WEP</span>
+                            </label>
+
+                        </div>
+
+                    </div>
+
                     <small class="error validationErr"></small>
-                    <button id="send" type="submit" class="Button ma-t-half">
-                        Generate
-                        <span class="Button-mask Button-slides slides-left Graident-five"></span>
-                    </button>
+
+                    <div class="form-field flex flex-1 flex-column">
+
+                        <button id="send" type="submit" class="Button ma-t-half">
+                            Generate
+                            <span class="Button-mask Button-slides slides-left Graident-five"></span>
+                        </button>
+
+                    </div>
+
                 </div>
+
             </form>
             <div>
-                <p class="info">Print Qr code just typing "Ctrl+P". Make sure to enable "background graphics" in the printing options if you use a chromium browser.</p>
+                <p class="info">Print Qr code just typing "Ctrl+P" with the keyboard. <br/><br/>In Firefox, enable: "Print backgrounds" from "More options".</p>
             </div>
             </div>
     </main>
-    <div id="generated" class="generated"></div>
+    <div id="generated" class="generated">
+        <div class="js-generated flex flex-1 ma-l-1">
+            <div class="qr-image flex self-center flex-1 flex-column min-height-17 justify-center">
+                <h1 class="self-center">Generate</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                </svg>
+            </div>
+        </div>
+    </div>
 </div>
-<script src="./client.js"></script>
 </body>
 </html>
