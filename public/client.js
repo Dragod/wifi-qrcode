@@ -126,7 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Get the form elements
 
-    const url = 'http://localhost:8000/qr'
+    //const url = 'http://localhost:8000/qr'
+    const url = 'https://pfcode-wifi-qr.onrender.com/qr'
     const ssid = document.getElementById('ssid')
     const password = document.getElementById('password')
     const form = document.getElementById('qr-form')
